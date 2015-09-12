@@ -21,7 +21,7 @@ public abstract class Product {
 	public double getImportTax () {
 		if (!this.isImported())
 			return 0;
-		else return 0.05 * this.getPrice();
+		else return Math.round(0.05 * this.getPrice() * 20)/20.00;
 	};
 	
 	public double computeTotalPrice () {

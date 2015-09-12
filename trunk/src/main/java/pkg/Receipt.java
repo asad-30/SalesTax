@@ -1,6 +1,11 @@
 package pkg;
+//import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+import java.lang.Math;
 
 public class Receipt {
 	
@@ -43,9 +48,27 @@ public class Receipt {
 		}
 		
 		
-		output[0] = Double.valueOf(newFormat.format(totalTax));
-		output[1] = Double.valueOf(newFormat.format(totalPrice));
+		output[0] = Double.valueOf(newFormat.format(totalTax) );
+		output[1] = Double.valueOf(newFormat.format(totalPrice) );
 		
 		return output;
 	};
+	
+	public static void main(String[] args) {
+		BasicTaxExemptProduct chocolateBox = new BasicTaxExemptProduct(11.25, true, "chocolateBox");
+		BasicTaxApplicableProduct perfumeBottle = new BasicTaxApplicableProduct(18.99, false, "localBottle");
+		BasicTaxApplicableProduct ImportedPerfumeBottle = new BasicTaxApplicableProduct(27.99, true, "ImportedPerfumeBottle");
+		BasicTaxExemptProduct headPills = new BasicTaxExemptProduct(9.75, false, "Tylenol");
+		
+		Product [] myArr = {chocolateBox, perfumeBottle, ImportedPerfumeBottle, headPills};
+		
+		Receipt r = new Receipt(myArr);
+		
+		assertTrue(r.getAllProducts() != null);
+		double [] output = new double[2];
+		output = r.generateTotal();
+		
+		System.out.println(output[0]);
+		System.out.println(output[1]);
+	}	
 }

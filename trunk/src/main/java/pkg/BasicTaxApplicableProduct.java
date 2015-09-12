@@ -13,6 +13,6 @@ class BasicTaxApplicableProduct extends Product {
 	
 	// compute basic and add imported
 	public double computeSalesTax() {
-		return getImportTax() + (0.1 * this.getPrice());
+		return getImportTax() + Math.round(0.1 * this.getPrice()*20)/20.00;
 	};
 }

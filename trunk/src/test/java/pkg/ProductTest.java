@@ -95,7 +95,79 @@ Total: 29.83
 		double [] output = new double[2];
 		output = r.generateTotal();
 		
+		// Total Sales Tax
 		assertTrue(output[0] == 1.50 );
+		
+		// Total 
 		assertTrue(output[1] == 29.83);
+	}
+	
+	/* 
+	 * 
+Input 2:
+1 imported box of chocolates at 10.00
+1 imported bottle of perfume at 47.50
+
+Output 2:
+1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15
+	 * */
+	@Test public void testGivenInputTwo() {
+		BasicTaxExemptProduct chocolateBox = new BasicTaxExemptProduct(10.00, true, "chocolateBox");
+		BasicTaxApplicableProduct perfumeBottle = new BasicTaxApplicableProduct(47.50, true, "perfumeBottle");
+		
+		Product [] myArr = {chocolateBox, perfumeBottle};
+		
+		Receipt r = new Receipt(myArr);
+		
+		assertTrue(r.getAllProducts() != null);
+		double [] output = new double[2];
+		output = r.generateTotal();
+		
+		// Total Sales Tax
+		assertTrue(output[0] == 7.65 );
+		
+		// Total 
+		assertTrue(output[1] == 65.15);
+	}
+	
+	/* 
+	 * 
+Input 3:
+1 imported bottle of perfume at 27.99
+1 bottle of perfume at 18.99
+1 packet of headache pills at 9.75
+1 imported box of chocolates at 11.25
+
+Output 3:
+1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+1 imported box of chocolates: 11.85
+Sales Taxes: 6.70
+Total: 74.68
+	 * */
+	@Test public void testGivenInputThree() {
+
+		BasicTaxApplicableProduct ImportedPerfumeBottle = new BasicTaxApplicableProduct(27.99, true, "ImportedPerfumeBottle");
+		BasicTaxApplicableProduct perfumeBottle = new BasicTaxApplicableProduct(18.99, false, "localBottle");
+		BasicTaxExemptProduct headPills = new BasicTaxExemptProduct(9.75, false, "Tylenol");
+		BasicTaxExemptProduct chocolateBox = new BasicTaxExemptProduct(11.25, true, "chocolateBox");
+		
+		Product [] myArr = {chocolateBox, perfumeBottle, ImportedPerfumeBottle, headPills};
+		
+		Receipt r = new Receipt(myArr);
+		
+		assertTrue(r.getAllProducts() != null);
+		double [] output = new double[2];
+		output = r.generateTotal();
+		
+		// Total Sales Tax
+		assertTrue(output[0] == 6.65 );
+		
+		// Total 
+		assertTrue(output[1] == 74.63);
 	}
 }
