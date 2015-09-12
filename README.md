@@ -1,5 +1,15 @@
 # SalesTax
 
+How to run this?
+
+1) git clone
+2) cd trunk
+3) mvn test
+
+Also, you can import the project into Eclipse as a "Existing Maven Project" and Run the Tests
+
+Instead of making a main() function and taking using input and printing output, I decided to add the objects and test the values of the resulting Sales Tax and Total on the Receipt
+
 Sales Tax is composed of two types of taxes:<br><br>
   1) Basic Sales Tax (10% applicable to all EXCEPT food, medical products and books) <br>
   2) Import Tax (5% applicable to ALL imported goods)
