@@ -95,6 +95,7 @@ Total: 29.83
 		double [] output = new double[2];
 		output = r.generateTotal();
 		
-		assertFalse(output[1] == 12.49 );
+		assertTrue(output[0] == 1.50 );
+		assertTrue(output[1] == 29.83);
 	}
 }

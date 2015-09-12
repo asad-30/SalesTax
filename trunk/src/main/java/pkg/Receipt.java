@@ -35,11 +35,11 @@ public class Receipt {
 		double totalPrice = 0;
 		double [] output = new double [2];
 		
-		Product [] arr = (Product[]) this.getAllElements();
+		Object [] arr = this.getAllElements();
 		
 		for (int i=0; i<arr.length; i++) {
-			totalTax += arr[i].computeSalesTax();
-			totalPrice += arr[i].computeTotalPrice();
+			totalTax += ((Product) arr[i]).computeSalesTax();
+			totalPrice += ((Product) arr[i]).computeTotalPrice();
 		}
 		
 		
