@@ -1,9 +1,13 @@
 package pkg;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class Receipt {
 	
 	private ArrayList<Product> myProductList;
+	
+	// Format the doubles to two decimals #.##
+	DecimalFormat newFormat = new DecimalFormat("#.##");
 	
 	public Receipt() {
 		myProductList = new ArrayList<Product>();
@@ -38,8 +42,9 @@ public class Receipt {
 			totalPrice += arr[i].computeTotalPrice();
 		}
 		
-		output[0] = totalTax;
-		output[1] = totalPrice;
+		
+		output[0] = Double.valueOf(newFormat.format(totalTax));
+		output[1] = Double.valueOf(newFormat.format(totalPrice));
 		
 		return output;
 	};
